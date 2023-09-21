@@ -1,3 +1,4 @@
+import copy
 import random
 
 from commands._tetris.Piece import Piece
@@ -19,7 +20,7 @@ class PieceFactory:
 
     def get(self) -> Piece:
         if(not self.bag):
-            self.bag = self.pieces.copy()
+            self.bag = copy.deepcopy(self.pieces)
         piece = self.bag[random.randint(0, len(self.bag)-1)]
         self.bag.remove(piece)
         return Piece(piece)

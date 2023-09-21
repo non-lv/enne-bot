@@ -9,14 +9,13 @@ class BoardControll:
     def __init__(self):
         self.board = Board(19, 10)
         self.boardDrawer = BoardDrawer()
-        self.score = 0
 
     async def gameLoop(self, interaction: Interaction):
-        await self.boardDrawer.drawBoard(interaction, self.board, self.score)
+        await self.boardDrawer.drawBoard(interaction, self.board)
         await self.boardDrawer.addActions()
 
         actions: list[Actions] = None
         while(self.board.move(actions)):
-            await self.boardDrawer.drawBoard(interaction, self.board, self.score)
+            await self.boardDrawer.drawBoard(interaction, self.board)
             actions = await self.boardDrawer.fetchInputs(interaction)
-        await self.boardDrawer.gameOver(self.score)
+        await self.boardDrawer.gameOver()
