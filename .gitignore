@@ -1,3 +1,11 @@
 ﻿.vscode
 __pycache__
 .env
+
+# Virtual environments
+venv/
+.venv/
+
+# uv
+.python-version
+uv.lock
